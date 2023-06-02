@@ -21,3 +21,19 @@ devicesRouter.post("/", async (req: Request, res: Response): Promise<void> => {
 devicesRouter.delete("/:deviceID", async (req: Request, res: Response): Promise<void> => {
   //TO DO: delete 
 });
+
+/*
+device {
+  id: Integer
+  name: String
+  consumption: Integer
+  isBattery: Boolean
+  chargeLevel?: integer
+}
+
+queuedDevice {
+  device: Device
+  start: timestamp
+  end: timestamp
+}
+*/
