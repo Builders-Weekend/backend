@@ -10,5 +10,14 @@ export const devicesRouter: Router = Router();
 //middleware
 
 //endpoints
-devicesRouter.get("/", async (req: Request, res: Response): Promise<void> => {}
-);
+devicesRouter.get("/", async (req: Request, res: Response): Promise<void> => {
+  //TO DO: get devices from DB and send to FE as an array
+});
+
+devicesRouter.post("/", async (req: Request, res: Response): Promise<void> => {
+  //TO DO: post new device to DB
+});
+
+devicesRouter.delete("/:deviceID", async (req: Request, res: Response): Promise<void> => {
+  //TO DO: delete 
+});
