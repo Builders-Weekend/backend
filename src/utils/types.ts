@@ -16,4 +16,10 @@ type Hour = {
     uvIndex: number
 }
 
-export type { weatherApiResponse, Forecast, ForecastDay, Hour };
+type PricingData = {
+    price: number,
+    valid_from: string,
+    valid_to: string
+}
+
+export type { weatherApiResponse, Forecast, ForecastDay, Hour, PricingData };
