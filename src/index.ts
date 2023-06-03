@@ -1,14 +1,17 @@
 import { configureServer } from "./server";
+import { connectDb } from "./db/config";
+import Logger from "./utils/winston";
 import { Express } from 'express';
 const PORT: string | number = process.env.PORT || 4000;
 const server: Express = configureServer();
 
 (() => {
   try {
+    connectDb();
     server.listen(PORT, () => {
-      console.log(`server is listening on port ${PORT}`);
+      Logger.info(`server is listening on port ${PORT}`);
     })
   } catch (error) {
-    console.error(error);
+    Logger.error(error);
   }
 })();
