@@ -1,14 +1,14 @@
 import { Schema, model, connect } from 'mongoose';
 import Logger from '../utils/winston';
 
-interface IDevice {
+export interface IDevice {
   name: string;
   consumption: number;
   isBattery?: boolean;
   chargeLevel?: number;
 }
 
-const deviceSchema = new Schema<IDevice>({
+export const deviceSchema = new Schema<IDevice>({
   name: { type: String, required: true },
   consumption: { type: Number, required: true },
   isBattery: Boolean,
