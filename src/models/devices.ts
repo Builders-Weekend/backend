@@ -8,16 +8,6 @@ interface IDevice {
   chargeLevel?: number;
 }
 
-/*
-device {
-  id: Integer
-  name: String
-  consumption: Integer
-  isBattery: Boolean
-  chargeLevel?: integer
-}
-*/
-
 const deviceSchema = new Schema<IDevice>({
   name: { type: String, required: true },
   consumption: { type: Number, required: true },
@@ -25,4 +15,4 @@ const deviceSchema = new Schema<IDevice>({
   chargeLevel: Number
 });
 
-export const User = model<IDevice>('User', deviceSchema);
+export const Device = model<IDevice>('Device', deviceSchema);
