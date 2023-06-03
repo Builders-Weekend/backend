@@ -4,7 +4,7 @@ import Logger from '../utils/winston';
 interface IDevice {
   name: string;
   consumption: number;
-  isBattery?: string;
+  isBattery?: boolean;
   chargeLevel?: number;
 }
 
