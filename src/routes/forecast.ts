@@ -7,5 +7,12 @@ dotenv.config();
 export const forecastRouter: Router = Router();
 
 forecastRouter.get("/:city", async (req: Request, res: Response): Promise<void> => {
-    //TO DO: get forecast from DB and send to FE as an array
-    });
+    try {
+        const { city } = req.params;
+        const response = await axios.get(`https://apihttp://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${city}&days=1`);
+        res.status(200).json(response.data);
+    }
+    catch (error) {
+        Logger.error(error);
+    }
+});
