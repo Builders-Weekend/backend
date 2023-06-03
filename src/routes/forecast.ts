@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import axios from "axios";
 import Logger from "../utils/winston";
 import dotenv from "dotenv";
-import { weatherApiResponse, Forecast, ForecastDay, Hour } from "../utils/weather_response_types";
+import { weatherApiResponse, Forecast, ForecastDay, Hour } from "../utils/types";
 dotenv.config();
 
 export const forecastRouter: Router = Router();
