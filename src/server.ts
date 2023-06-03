@@ -17,6 +17,7 @@ export function configureServer():Express {
 
   //routes
   app.use('/api/devices', devicesRouter);
+  app.use('/api/forecast', devicesRouter);
 
   return app;
 };
