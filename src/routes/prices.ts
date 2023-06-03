@@ -2,23 +2,29 @@ import { Router, Request, Response } from "express";
 import axios from "axios";
 import Logger from "../utils/winston";
 import dotenv from "dotenv";
+import { PricingData } from "../utils/types";
 dotenv.config();
 
 export const pricesRouter: Router = Router();
 
 pricesRouter.get("/", async (req: Request, res: Response): Promise<void> => {
-    const response = await axios.get("https://kraken-japan-hackathon-api.onrender.com/products/AGILE-23-06-01/product_rates/consumption_charges");
-    const pricingData = extractPricingData(response.data);
-    res.status(200).send(pricingData);
+    try {
+        const response = await axios.get("https://kraken-japan-hackathon-api.onrender.com/products/AGILE-23-06-01/product_rates/consumption_charges");
+        const pricingData = extractPricingData(response.data);
+        res.status(200).send(pricingData);
+    } catch (error) {
+        Logger.error(error);
+    }
 });
 
-const extractPricingData = (data: any): any => {
+const extractPricingData = (data: PricingData[]): PricingData[] => {
     const pricingDataForToday = filterByDate(data, new Date("2023-06-02"));
+    return pricingDataForToday;
 };
 
-const filterByDate = (data: any, date: Date): any => {
-    return data.filter((item: any) => {
-        const itemDate = new Date(item.date);
+const filterByDate = (data: PricingData[], date: Date): PricingData[] => {
+    return data.filter((item: PricingData) => {
+        const itemDate = new Date(item.valid_from);
         return isSameDate(itemDate, date);
     });
 };
