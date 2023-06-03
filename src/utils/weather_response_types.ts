@@ -15,3 +15,5 @@ type Hour = {
     windKph: number,
     uvIndex: number
 }
+
+export type { weatherApiResponse, Forecast, ForecastDay, Hour };
