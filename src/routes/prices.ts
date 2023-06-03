@@ -7,7 +7,6 @@ dotenv.config();
 export const pricesRouter: Router = Router();
 
 pricesRouter.get("/", async (req: Request, res: Response): Promise<void> => {
-    //TODO: get prices from DB and send to FE as an array
     const response = await axios.get("https://kraken-japan-hackathon-api.onrender.com/products/AGILE-23-06-01/product_rates/consumption_charges");
     const pricingData = extractPricingData(response.data);
     res.status(200).send(pricingData);

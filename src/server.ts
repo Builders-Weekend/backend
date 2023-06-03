@@ -2,6 +2,8 @@ import express, { Express, Request, Response } from 'express';
 import helmet from 'helmet';
 import morganMiddleware from './utils/middleware/morgan';
 import { devicesRouter } from './routes/devices';
+import { forecastRouter } from './routes/forecast';
+import { pricesRouter } from './routes/prices';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -19,7 +21,8 @@ export function configureServer():Express {
 
   //routes
   app.use('/api/devices', devicesRouter);
-  app.use('/api/forecast', devicesRouter);
+  app.use('/api/forecast', forecastRouter);
+  app.use('/api/prices', pricesRouter);
 
   return app;
 };
