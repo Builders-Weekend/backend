@@ -21,12 +21,13 @@ devicesRouter.get("/", async (req: Request, res: Response): Promise<void> => {
 });
 
 devicesRouter.post("/", async (req: Request, res: Response): Promise<void> => {
-  const { name, consumption, isBattery, chargeLevel} = req.body
+  const { name, consumptionPerHour, isBattery, currentChargeVal, maxChargeVal} = req.body
   const newDevice = new Device({
     name: name,
-    consumption: consumption,
+    consumptionPerHour: consumptionPerHour,
     isBattery: isBattery,
-    chargeLevel: chargeLevel,
+    currentChargeVal: currentChargeVal,
+    maxChargeVal: maxChargeVal
   });
 
   try {

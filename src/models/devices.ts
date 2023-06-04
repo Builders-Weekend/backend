@@ -3,16 +3,18 @@ import Logger from '../utils/winston';
 
 export interface IDevice {
   name: string;
-  consumption: number;
+  consumptionPerHour: number;
   isBattery?: boolean;
-  chargeLevel?: number;
+  currentChargeVal?: number;
+  maxChargeVal?: number;
 }
 
 export const deviceSchema = new Schema<IDevice>({
   name: { type: String, required: true },
-  consumption: { type: Number, required: true },
-  isBattery: Boolean,
-  chargeLevel: Number
+  consumptionPerHour: { type: Number, required: true },
+  isBattery: { type: Boolean, required: false },
+  currentChargeVal:{ type: Number, required: false },
+  maxChargeVal: { type: Number, required: false }
 });
 
 export const Device = model<IDevice>('Device', deviceSchema);
